@@ -2,11 +2,16 @@ import React from 'react';
 import './AnswerItem.css'
 
 const AnswerItem = props => {
+	const cls = ['AnswerItem']
+	if (props.state) {
+		console.log('add');
+		cls.push(props.state)
+	}
+
 	return (
 		<li
-			className='AnswerItem'
+			className={cls.join(' ')}
 			onClick={() => {
-				console.log(props.i);
 				props.onAnswerClick(props.i)
 			}}
 		>

@@ -54,6 +54,12 @@ class Page extends Component {
 
 		if (question.rightAnswerId === answerId) {
 
+			this.setState({
+				answerState: {
+					[answerId]: 'success'
+				}
+			})
+
 			const timeout = window.setTimeout(() => {
 				if (this.isQuizFinished()) {
 					console.log('finished');
@@ -68,6 +74,12 @@ class Page extends Component {
 			}, 50)
 
 		} else {
+			this.setState({
+				answerState: {
+					[answerId]: 'error'
+				}
+			})
+
 		}
 	}
 
@@ -87,6 +99,7 @@ class Page extends Component {
 						onAnswerClick={this.onAnswerClickHandler}
 						answerNumber={this.state.activeQuestion + 1}
 						quizLength={this.state.page.length}
+						state={this.state.answerState}
 					/>
 				</div>
 			</div>
